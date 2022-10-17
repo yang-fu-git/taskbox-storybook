@@ -1144,13 +1144,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-86e2a07aa76df7cad496d6191289af25c5a6eb701d8896aff477066c25a2b47062f05637b9ae28cf000e4df1f59dec97eaf573a9613b6aa0db4a36df42a96349",
+            "id": "module-AppModule-166095c69e6738a6626c23568dc5de5679e250a8427048ea5d3b7071a465da83dfca449026c0b50dea415839ae48d60b4249fd7f39db6ebda4b549e88f943eb3",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\n\nimport { TaskModule } from './components/task.module';\nimport { NgxsModule } from '@ngxs/store';\nimport { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';\nimport { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';\nimport { AppComponent } from './app.component';\n// import { TaskComponent } from './components/task.component';\n// import { Task } from './task.module';\nimport { environment } from '../environments/environment';\n// wire the store to the app.\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [BrowserModule,\n            TaskModule,\n             NgxsModule.forRoot([], {\n              developmentMode: !environment.production,\n            }),\n            NgxsReduxDevtoolsPluginModule.forRoot(),\n            NgxsLoggerPluginModule.forRoot({\n              disabled: environment.production,\n            }),\n            ],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\n\nimport { TaskModule } from './components/task.module';\nimport { NgxsModule } from '@ngxs/store';\nimport { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';\nimport { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';\n\nimport { environment } from '../environments/environment';\nimport { AppComponent } from './app.component';\n// wire the store to the app.\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [BrowserModule,\n            TaskModule,\n             NgxsModule.forRoot([], {\n              developmentMode: !environment.production,\n            }),\n            NgxsReduxDevtoolsPluginModule.forRoot(),\n            NgxsLoggerPluginModule.forRoot({\n              disabled: environment.production,\n            }),\n            ],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
             "children": [
                 {
                     "type": "providers",

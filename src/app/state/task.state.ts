@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { State, Selector, Action, StateContext } from '@ngxs/store';
 import { patch, updateItem } from '@ngxs/store/operators';
-import { Task } from '../task.module';
+import { Task } from '../task.model';
 
-
+// States are classes that define a state container.
 // Defines the actions available to the app
 export const actions = {
   ARCHIVE_TASK: 'ARCHIVE_TASK',

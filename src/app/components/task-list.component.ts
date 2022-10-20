@@ -26,14 +26,14 @@ export class TaskListComponent {
   /**
    * Component method to trigger the archiveTask event
    */
-  archiveTask(id: string) {
+  archiveTask(id: any) {
     this.store.dispatch(new ArchiveTask(id));
   }
 
   /**
    * Component method to trigger the pinTask event
    */
-  pinTask(id: string) {
+  pinTask(id: any) {
     this.store.dispatch(new PinTask(id));
   }
 }

@@ -1,11 +1,13 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import Button from './button.component';
-
+// import { storiesOf } from '@storybook/angular';
+import { boolean, number, text ,withKnobs} from '@storybook/addon-knobs';
 // More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
 export default {
   title: 'Example/Button',
-  component: Button,
+  component:Button,
+  // decorators: [withKnobs],
   // More on argTypes: https://storybook.js.org/docs/angular/api/argtypes
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -40,3 +42,10 @@ Small.args = {
   size: 'small',
   label: 'Button',
 };
+
+// export const Default = () => ({
+//   component: Button,
+//   props: {
+//     label: text('text', 'Hello Storybook'), // The first param of the knob function has to be exactly the same as the component input.
+//   },
+// });

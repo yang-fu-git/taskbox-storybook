@@ -2,6 +2,79 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "Button",
+            "id": "interface-Button-ec6e3b655930e322f4ec9a3eccc9dd488a6eb011c5afaaba0bb487e1ed75af2ef2c61471d57ef0a491e4abf1e7d2de7b9718143cccc0a38c78ae98b7ceac9825",
+            "file": "src/app/button.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface Button {\n    label: string;\n    primary: boolean;\n    size: string;\n    backgroundColor:string;\n  }",
+            "properties": [
+                {
+                    "name": "backgroundColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "primary",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "size",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
+            "name": "ButtonStateModel",
+            "id": "interface-ButtonStateModel-f515dacf1af0849bd3a4f90d0cf9f40f4d09bde34c7429bc96f7565bff3bcbdb151cc0cd575ca6b42a5cfa9290bd7d9fff4aec21f2314fcd1a3a3408d9a504b7",
+            "file": "src/app/state/button.state.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { State, Selector, Action, StateContext } from '@ngxs/store';\nimport { patch, updateItem } from '@ngxs/store/operators';\nimport { Button } from '../button.model';\n\n\nexport interface ButtonStateModel {\n    button: Button;\n  }\n  const defaultButton:Button = \n    {\n        label: \"Button\",\n        primary: true,\n        size: \"large\",\n        backgroundColor:\"red\",\n      };\n  @State<ButtonStateModel>({\n    name: 'button',\n    defaults: {\n      button:defaultButton,\n    },\n  })\n\n@Injectable()\nexport class ButtonState {\n  @Selector()\n  static getButton(state: ButtonStateModel): Button {\n    return state.button;\n  }\n}",
+            "properties": [
+                {
+                    "name": "button",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Button",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
             "name": "Task",
             "id": "interface-Task-decf62169610b19f3b9df15ab33e4f2ed95f6f9967833fe4162d82c58eed4ea45b95609ff6183f49d3dfeb9c070334e47ef64a5fe30ffed733d451497be96375",
             "file": "src/app/task.model.ts",
@@ -86,7 +159,7 @@
         {
             "name": "User",
             "id": "interface-User-9c7e5f1bbbab702cb032307d130876cb68969b0cd4eedef32a0c8cad8081a54e5f8f577ed6ad4539c1b99a1d246cb34031d198c2ea8eba440e64e91b14f01fdc",
-            "file": "src/stories/User.ts",
+            "file": "stories/User.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -97,6 +170,57 @@
         }
     ],
     "injectables": [
+        {
+            "name": "ButtonState",
+            "id": "injectable-ButtonState-f515dacf1af0849bd3a4f90d0cf9f40f4d09bde34c7429bc96f7565bff3bcbdb151cc0cd575ca6b42a5cfa9290bd7d9fff4aec21f2314fcd1a3a3408d9a504b7",
+            "file": "src/app/state/button.state.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getButton",
+                    "args": [
+                        {
+                            "name": "state",
+                            "type": "ButtonStateModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Button",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "Selector",
+                            "stringifiedArguments": ""
+                        }
+                    ],
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "state",
+                            "type": "ButtonStateModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { State, Selector, Action, StateContext } from '@ngxs/store';\nimport { patch, updateItem } from '@ngxs/store/operators';\nimport { Button } from '../button.model';\n\n\nexport interface ButtonStateModel {\n    button: Button;\n  }\n  const defaultButton:Button = \n    {\n        label: \"Button\",\n        primary: true,\n        size: \"large\",\n        backgroundColor:\"red\",\n      };\n  @State<ButtonStateModel>({\n    name: 'button',\n    defaults: {\n      button:defaultButton,\n    },\n  })\n\n@Injectable()\nexport class ButtonState {\n  @Selector()\n  static getButton(state: ButtonStateModel): Button {\n    return state.button;\n  }\n}",
+            "type": "injectable"
+        },
         {
             "name": "TasksState",
             "id": "injectable-TasksState-a3d94f5dba026f177edd37b96f0ca907e7e8c34d3bba26f4259a7c08bd1ebf728585e5d5f35b65cd42928cf571ccc751e463de30e3a9a5f61c9607989815efae",
@@ -536,7 +660,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-4c4f8f558bc79de77fa7bb41439ef57f518a18b73d9934db74271edfac208ad1af56d3e26a1e56e1c3d4fb99d86d9fa40db3ad6cc52ce85dd2a70c885414941e",
+            "id": "component-AppComponent-aa7dc2171cc77d23590e927eca91025f52342b2843ddaea8989c3632a2f7aa8ffdb052bada061afdfea4fd47a553fc1d6842c3a3ff07d1f78b56b710d8d0ae24",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -546,7 +670,7 @@
             "selector": "app-root",
             "styleUrls": [],
             "styles": [],
-            "template": "<app-inbox-screen></app-inbox-screen>\n",
+            "template": "<app-button></app-button>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [],
@@ -560,7 +684,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 11
                 }
             ],
             "methodsClass": [],
@@ -571,15 +695,78 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  // templateUrl: './app.component.html',\n  // styleUrls: ['./app.component.css'],\n  template: `\n     <app-inbox-screen></app-inbox-screen>\n  `,\n})\nexport class AppComponent {\n  title = 'taskbox';\n}\n",
+            "sourceCode": "import { Component,Output ,EventEmitter} from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  // templateUrl: './app.component.html',\n  // styleUrls: ['./app.component.css'],\n  template: `\n     <app-button></app-button>`,\n})\nexport class AppComponent {\n  title = 'taskbox';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ""
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-4ef205c97a334c309aa4001c8ab4a6d9571dcae18d0e85aaf0d367467ab5d3a9f13ab3573726f1fcb409bc9b49894dadfb80b1bbe1b6ba7041455ad9d4922004",
-            "file": "src/stories/button.component.ts",
+            "id": "component-ButtonComponent-1b04ed82ebd009176f4e39d5043f3955004323a09b231aed63942271aaa030ce69881bd04141f6034c35eb92197ac169cd5cf7c23d18b456c183c7e525d757ce",
+            "file": "src/app/components/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-button",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<button type=\"button\">Default</button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "button",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Button",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Button } from '../button.model';\n@Component({\n  selector: 'app-button',\n  // templateUrl: './button.component.html',\n  \n  template: `\n  <button type=\"button\">Default</button>`,\n\n  // styleUrls: ['./button.component.css']\n})\nexport class ButtonComponent implements OnInit {\n  button:Button;\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 13
+            },
+            "implements": [
+                "OnInit"
+            ]
+        },
+        {
+            "name": "DefaultButtonComponent",
+            "id": "component-DefaultButtonComponent-787425f9335bdc3c1d40f4d5c9992f2d7e7f5e10ebc19857e30d9c4d24708c3b21244532c2caf921c0eb6436f7b29367bce9afe238e12b1fe8ea16132cfa4f9e",
+            "file": "src/app/default/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -611,15 +798,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 711,
-                            "end": 724,
+                            "pos": 699,
+                            "end": 712,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 712,
-                                "end": 720,
+                                "pos": 700,
+                                "end": 708,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -648,13 +835,20 @@
                 },
                 {
                     "name": "size",
-                    "defaultValue": "'medium'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHow large should the button be?\n",
                     "description": "<p>How large should the button be?</p>\n",
                     "line": 32,
                     "type": "\"small\" | \"medium\" | \"large\"",
+                    "decorators": []
+                },
+                {
+                    "name": "state",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "\"enabled\" | \"disabled\" | \"hovor\" | \"focused\" | \"selected\" | \"activated\" | \"pressed\" | \"dragged\"",
                     "decorators": []
                 }
             ],
@@ -666,7 +860,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nOptional click handler\n",
                     "description": "<p>Optional click handler</p>\n",
-                    "line": 46,
+                    "line": 56,
                     "type": "EventEmitter"
                 }
             ],
@@ -679,11 +873,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport class DefaultButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  @Input()\n  state:\n    | 'enabled'\n    | 'disabled'\n    | 'hovor'\n    | 'focused'\n    | 'selected'\n    | 'activated'\n    | 'pressed'\n    | 'dragged';\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary\n      ? 'storybook-button--primary'\n      : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: rgb(251, 137, 7);\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: rgb(94, 53, 240);\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n\n",
                     "styleUrl": "./button.css"
                 }
             ],
@@ -695,7 +889,7 @@
                         "name": "classes",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 48
+                        "line": 58
                     }
                 }
             }
@@ -703,7 +897,7 @@
         {
             "name": "HeaderComponent",
             "id": "component-HeaderComponent-a557eec14f72c438a8033301f4d6ce023e0a1844a3b06ec2b38794a612acc31735ae78a5ee10071b230c8c20d699eb914554e69d07ade54adb371da8efb464cc",
-            "file": "src/stories/header.component.ts",
+            "file": "stories/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -843,7 +1037,7 @@
         {
             "name": "PageComponent",
             "id": "component-PageComponent-7126d8c2607c946741c651482413b43feb72b2d63cac9d3ac173fde206a5e635eb4cdbf7ca7ac9327c7d4d05cf7ef619144c34c11609ad677081d0ee4e855064",
-            "file": "src/stories/page.component.ts",
+            "file": "stories/page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -1226,7 +1420,7 @@
         },
         {
             "name": "TaskListComponent",
-            "id": "component-TaskListComponent-204bb3a91340c37b7b88452f9e1e49a2e1cd18d544ff9158a4bab9de3219ebc8b0bcf16ab72d51d67f741855be32321fae71d2c074b23e414d23b2e33f8f8f3a",
+            "id": "component-TaskListComponent-4170f1df7766e3d6a57ddd88ccf9c05912868606161a946c3e5424b1fe1961ec88b438138e9105a1faf404194c3bd797c9ec99cdfe275a0d3650032cfb12fee1",
             "file": "src/app/components/task-list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1258,7 +1452,7 @@
                     "args": [
                         {
                             "name": "id",
-                            "type": "string",
+                            "type": "any",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1274,7 +1468,7 @@
                     "jsdoctags": [
                         {
                             "name": "id",
-                            "type": "string",
+                            "type": "any",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1288,7 +1482,7 @@
                     "args": [
                         {
                             "name": "id",
-                            "type": "string",
+                            "type": "any",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1304,7 +1498,7 @@
                     "jsdoctags": [
                         {
                             "name": "id",
-                            "type": "string",
+                            "type": "any",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1321,7 +1515,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { Store } from '@ngxs/store'; // read data from the store\nimport { ArchiveTask, PinTask } from '../state/task.state';\nimport { Observable } from 'rxjs';\n\n\n// keep the presentational version of the TaskList separate is that it is easier to test and isolate.\n// As it doesn't rely on the presence of a store, it is much easier to deal with from a testing perspective.\n@Component({\n  selector: 'app-task-list',\n  template: `\n    <app-pure-task-list\n      [tasks]=\"tasks$ | async\"\n      (onArchiveTask)=\"archiveTask($event)\"\n      (onPinTask)=\"pinTask($event)\"\n    ></app-pure-task-list>\n  `,\n})\nexport class TaskListComponent {\n  tasks$?: Observable<any>;\n\n  constructor(private store: Store) {\n     this.tasks$ = store.select((state) => state.taskbox.tasks);\n  }\n\n  /**\n   * Component method to trigger the archiveTask event\n   */\n  archiveTask(id: string) {\n    this.store.dispatch(new ArchiveTask(id));\n  }\n\n  /**\n   * Component method to trigger the pinTask event\n   */\n  pinTask(id: string) {\n    this.store.dispatch(new PinTask(id));\n  }\n}",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { Store } from '@ngxs/store'; // read data from the store\nimport { ArchiveTask, PinTask } from '../state/task.state';\nimport { Observable } from 'rxjs';\n\n\n// keep the presentational version of the TaskList separate is that it is easier to test and isolate.\n// As it doesn't rely on the presence of a store, it is much easier to deal with from a testing perspective.\n@Component({\n  selector: 'app-task-list',\n  template: `\n    <app-pure-task-list\n      [tasks]=\"tasks$ | async\"\n      (onArchiveTask)=\"archiveTask($event)\"\n      (onPinTask)=\"pinTask($event)\"\n    ></app-pure-task-list>\n  `,\n})\nexport class TaskListComponent {\n  tasks$?: Observable<any>;\n\n  constructor(private store: Store) {\n     this.tasks$ = store.select((state) => state.taskbox.tasks);\n  }\n\n  /**\n   * Component method to trigger the archiveTask event\n   */\n  archiveTask(id: any) {\n    this.store.dispatch(new ArchiveTask(id));\n  }\n\n  /**\n   * Component method to trigger the pinTask event\n   */\n  pinTask(id: any) {\n    this.store.dispatch(new PinTask(id));\n  }\n}",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1356,13 +1550,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-111b9938416452920b1483c91249f97e236914c7a21817e96d22191dec1da8f75b9e238ed7ac4ffbecdbb072d77e0fc1ccc7bb6511c517d88aed002e9f61e5ae",
+            "id": "module-AppModule-1ba2637a60cdfe7a51363c28a4664301117ed8ca8941933b1d49184a5f66f8f5304e45a61dc1b6e8d20995c6b9cc60efae69cdc779be5e5a359ed8a3247a30a4",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\n\nimport { TaskModule } from './components/task.module';\nimport { NgxsModule } from '@ngxs/store';\nimport { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';\nimport { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';\n\nimport { environment } from '../environments/environment';\nimport { AppComponent } from './app.component';\n// wire the store to the app.\nimport { InboxScreenComponent } from './components/inbox-screen.component';\nimport { PureInboxScreenComponent } from './components/pure-inbox-screen.component';\n@NgModule({\n  declarations: [AppComponent,InboxScreenComponent,PureInboxScreenComponent],\n  imports: [BrowserModule,\n            TaskModule,\n             NgxsModule.forRoot([], {\n              developmentMode: !environment.production,\n            }),\n            NgxsReduxDevtoolsPluginModule.forRoot(),\n            NgxsLoggerPluginModule.forRoot({\n              disabled: environment.production,\n            }),\n            ],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { TaskModule } from './components/task.module';\nimport { NgxsModule } from '@ngxs/store';\nimport { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';\nimport { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';\n\nimport { environment } from '../environments/environment';\nimport { AppComponent } from './app.component';\n\n// wire the store to the app.\nimport { InboxScreenComponent } from './components/inbox-screen.component';\nimport { PureInboxScreenComponent } from './components/pure-inbox-screen.component';\nimport { DefaultButtonComponent } from './default/button.component';\nimport { ButtonComponent } from './components/button.component';\nimport { CommonModule } from '@angular/common';\n\n@NgModule({\n  declarations: [\n    AppComponent,\n    InboxScreenComponent,\n    PureInboxScreenComponent,\n    ButtonComponent,\n    DefaultButtonComponent,\n  ],\n  imports: [\n    BrowserModule,\n    CommonModule,\n    TaskModule,\n    NgxsModule.forRoot([], {\n      developmentMode: !environment.production,\n    }),\n    NgxsReduxDevtoolsPluginModule.forRoot(),\n    NgxsLoggerPluginModule.forRoot({\n      disabled: environment.production,\n    }),\n  ],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1373,6 +1567,12 @@
                     "elements": [
                         {
                             "name": "AppComponent"
+                        },
+                        {
+                            "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "DefaultButtonComponent"
                         },
                         {
                             "name": "InboxScreenComponent"
@@ -1498,6 +1698,16 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/app/components/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/app/components/pure-inbox-screen.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1523,6 +1733,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "defaultButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/state/button.state.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Button",
+                "defaultValue": "{\n        label: \"Button\",\n        primary: true,\n        size: \"large\",\n        backgroundColor:\"red\",\n      }"
             },
             {
                 "name": "defaultTasks",
@@ -1578,7 +1798,17 @@
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
+                "file": "src/app/components/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Large",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/default/Button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1598,7 +1828,7 @@
                 "name": "LoggedIn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
+                "file": "stories/Header.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1608,7 +1838,7 @@
                 "name": "LoggedIn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
+                "file": "stories/Page.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1618,7 +1848,7 @@
                 "name": "LoggedOut",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
+                "file": "stories/Header.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1628,7 +1858,7 @@
                 "name": "LoggedOut",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
+                "file": "stories/Page.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1648,7 +1878,17 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
+                "file": "src/app/components/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/default/Button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1658,7 +1898,17 @@
                 "name": "Secondary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
+                "file": "src/app/components/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/default/Button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1668,7 +1918,17 @@
                 "name": "Small",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
+                "file": "src/app/components/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Small",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/default/Button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1678,17 +1938,7 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<Button>",
-                "defaultValue": "(args: Button) => ({\n  props: args,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
+                "file": "stories/Header.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<Header>",
@@ -1698,11 +1948,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
+                "file": "stories/Page.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<Page>",
                 "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "args => ({\n  props: {\n    ...args,\n  },\n})"
             },
             {
                 "name": "Template",
@@ -1733,6 +1993,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "args => ({\n  props: {\n    ...args,\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask,\n  },\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/default/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<Button>",
+                "defaultValue": "(args: Button) => ({\n  props: args,\n})"
             },
             {
                 "name": "WithInteractions",
@@ -1893,6 +2163,68 @@
                     "defaultValue": "Template.bind({})"
                 }
             ],
+            "src/app/components/button.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Large",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Small",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "args => ({\n  props: {\n    ...args,\n  },\n})"
+                }
+            ],
             "src/app/components/pure-inbox-screen.stories.ts": [
                 {
                     "name": "Default",
@@ -1987,6 +2319,18 @@
                     "defaultValue": "Template.bind({})"
                 }
             ],
+            "src/app/state/button.state.ts": [
+                {
+                    "name": "defaultButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/state/button.state.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Button",
+                    "defaultValue": "{\n        label: \"Button\",\n        primary: true,\n        size: \"large\",\n        backgroundColor:\"red\",\n      }"
+                }
+            ],
             "src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -2011,12 +2355,12 @@
                     "defaultValue": "{\n  production: false\n}"
                 }
             ],
-            "src/stories/Button.stories.ts": [
+            "src/app/default/Button.stories.ts": [
                 {
                     "name": "Large",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
+                    "file": "src/app/default/Button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2026,7 +2370,7 @@
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
+                    "file": "src/app/default/Button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2036,7 +2380,7 @@
                     "name": "Secondary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
+                    "file": "src/app/default/Button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2046,7 +2390,7 @@
                     "name": "Small",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
+                    "file": "src/app/default/Button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2056,19 +2400,19 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
+                    "file": "src/app/default/Button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<Button>",
                     "defaultValue": "(args: Button) => ({\n  props: args,\n})"
                 }
             ],
-            "src/stories/Header.stories.ts": [
+            "stories/Header.stories.ts": [
                 {
                     "name": "LoggedIn",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
+                    "file": "stories/Header.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2078,7 +2422,7 @@
                     "name": "LoggedOut",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
+                    "file": "stories/Header.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2088,19 +2432,19 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
+                    "file": "stories/Header.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<Header>",
                     "defaultValue": "(args: Header) => ({\n  props: args,\n})"
                 }
             ],
-            "src/stories/Page.stories.ts": [
+            "stories/Page.stories.ts": [
                 {
                     "name": "LoggedIn",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
+                    "file": "stories/Page.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2110,7 +2454,7 @@
                     "name": "LoggedOut",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
+                    "file": "stories/Page.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2120,7 +2464,7 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
+                    "file": "stories/Page.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<Page>",
@@ -2134,7 +2478,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 4,
+        "count": 3,
         "status": "low",
         "files": [
             {
@@ -2144,6 +2488,84 @@
                 "name": "AppComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/button.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Button",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -2362,6 +2784,93 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/default/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/default/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/default/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/default/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/default/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/default/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DefaultButtonComponent",
+                "coveragePercent": 71,
+                "coverageCount": "5/7",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/state/button.state.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ButtonState",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/button.state.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ButtonStateModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/button.state.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "defaultButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/state/task.state.ts",
                 "type": "class",
                 "linktype": "classe",
@@ -2456,57 +2965,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Large",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Secondary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Small",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Header.stories.ts",
+                "filePath": "stories/Header.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2516,7 +2975,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/Header.stories.ts",
+                "filePath": "stories/Header.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2526,7 +2985,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/Header.stories.ts",
+                "filePath": "stories/Header.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2536,7 +2995,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/Page.stories.ts",
+                "filePath": "stories/Page.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2546,7 +3005,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/Page.stories.ts",
+                "filePath": "stories/Page.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2556,7 +3015,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/Page.stories.ts",
+                "filePath": "stories/Page.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2566,7 +3025,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/User.ts",
+                "filePath": "stories/User.ts",
                 "type": "interface",
                 "linktype": "interface",
                 "name": "User",
@@ -2575,16 +3034,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/button.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "ButtonComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
-            },
-            {
-                "filePath": "src/stories/header.component.ts",
+                "filePath": "stories/header.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "HeaderComponent",
@@ -2593,7 +3043,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/page.component.ts",
+                "filePath": "stories/page.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "PageComponent",

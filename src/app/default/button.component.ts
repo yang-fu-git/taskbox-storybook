@@ -12,7 +12,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   </button>`,
   styleUrls: ['./button.css'],
 })
-export default class ButtonComponent {
+export class DefaultButtonComponent {
   /**
    * Is this the principal call to action on the page?
    */
@@ -29,7 +29,7 @@ export default class ButtonComponent {
    * How large should the button be?
    */
   @Input()
-  size: 'small' | 'medium' | 'large' = 'medium';
+  size: 'small' | 'medium' | 'large';
 
   /**
    * Button contents
@@ -39,6 +39,16 @@ export default class ButtonComponent {
   @Input()
   label = 'Button';
 
+  @Input()
+  state:
+    | 'enabled'
+    | 'disabled'
+    | 'hovor'
+    | 'focused'
+    | 'selected'
+    | 'activated'
+    | 'pressed'
+    | 'dragged';
   /**
    * Optional click handler
    */
@@ -46,7 +56,9 @@ export default class ButtonComponent {
   onClick = new EventEmitter<Event>();
 
   public get classes(): string[] {
-    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+    const mode = this.primary
+      ? 'storybook-button--primary'
+      : 'storybook-button--secondary';
 
     return ['storybook-button', `storybook-button--${this.size}`, mode];
   }
